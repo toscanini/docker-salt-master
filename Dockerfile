@@ -14,7 +14,8 @@ RUN ln -s /bin/true /sbin/initctl
 
 RUN apt-get install -y salt-master openssh-server 
 
-RUN echo "root:$ROOT_PW" | chpasswd
+# slightly less than ideal
+RUN echo "root:salt-master" | chpasswd
 RUN mkdir -p -m0755 /var/run/sshd
 
 ADD ./supervisor-salt.conf /etc/supervisor/conf.d/
